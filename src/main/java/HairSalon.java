@@ -10,6 +10,16 @@ public class HairSalon {
   private List<Stylist> stylists;
   private int id;
 
+  @Override
+  public boolean equals(Object otherHairSalon) {
+    if (!(otherHairSalon instanceof HairSalon)) {
+      return false;
+    } else {
+      HairSalon newHairSalon = (HairSalon) otherHairSalon;
+      return this.getName().equals(newHairSalon.getName()) &&
+             this.getId() == newHairSalon.getId();
+    }
+  }
 
   public HairSalon(String _name, String _location, String _website, String _description)
     {
@@ -23,15 +33,15 @@ public class HairSalon {
     this.name = _name;
   }
 
-  public void setName(String _location) {
+  public void setLocation(String _location) {
     this.location = _location;
   }
 
-  public void setName(String _website) {
+  public void setWebsite(String _website) {
     this.website = _website;
   }
 
-  public void setName(String _description) {
+  public void setDescription(String _description) {
     this.description = _description;
   }
 
@@ -65,10 +75,10 @@ public class HairSalon {
   public static HairSalon find(int id) {
     try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM hair_salons where id=:id;";
-      HairSalon hair-salon = con.createQuery(sql)
+      HairSalon hair_salon = con.createQuery(sql)
         .addParameter("id", id)
         .executeAndFetchFirst(HairSalon.class);
-      return hair-salon;
+      return hair_salon;
     }
   }
 
@@ -78,17 +88,6 @@ public class HairSalon {
       return con.createQuery(sql)
         .addParameter("id", this.id)
         .executeAndFetch(Stylist.class);
-    }
-  }
-
-  @Override
-  public boolean equals(Object otherHairSalon) {
-    if (!(otherHairSalon instanceof HairSalon)) {
-      return false;
-    } else {
-      HairSalon newHairSalon = (HairSalon) otherHairSalon;
-      return this.getName().equals(newHairSalon.getName()) &&
-             this.getId() == newHairSalon.getId();
     }
   }
 
