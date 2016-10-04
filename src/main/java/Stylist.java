@@ -17,8 +17,10 @@ public class Stylist{
     } else {
       Stylist newStylist = (Stylist) otherStylist;
       return this.getName().equals(newStylist.getName()) &&
-             this.getId() == newStylist.getId() &&
-             this.getHairSalonId() == newStylist.getHairSalonId();
+             this.getEmail().equals(newStylist.getEmail()) &&
+             this.getPhoneNumber().equals(newStylist.getPhoneNumber()) &&
+             this.getHairSalonId() == newStylist.getHairSalonId() &&
+             this.getId() == newStylist.getId();
     }
   }
 
@@ -92,6 +94,22 @@ public class Stylist{
         .addParameter("phonenumber", this.phoneNumber)
         .addParameter("hairsalonid", this.hairSalonId)
         .executeUpdate().getKey();
+    }
+  }
+
+  public void update() {
+      try(Connection con = DB.sql2o.open()) {
+        String sql = "UPDATE stylists SET name = :name, email = :email, " +
+                     "phonenumber = :phonenumber, hairsalonid = :hairsalonid " +
+                     "WHERE id = :id;";
+
+        con.createQuery(sql)
+          .addParameter("name", this.name)
+          .addParameter("email", this.email)
+          .addParameter("phonenumber", this.phoneNumber)
+          .addParameter("hairsalonid", this.hairSalonId)
+          .addParameter("id", this.id)
+          .executeUpdate();
     }
   }
 
