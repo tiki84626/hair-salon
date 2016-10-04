@@ -18,12 +18,42 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    post("/", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      String name = request.queryParams("name");
+      String location = request.queryParams("location");
+      String website = request.queryParams("website");
+      String description = request.queryParams("description");
+      HairSalon hairsalon = new HairSalon(name, location, website, description);
+      hairsalon.save();
+      response.redirect("/");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("/hairsalons/new", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      model.put("template", "templates/hairsalon-form.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
     get("/stylists", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       model.put("stylists", Stylist.all());
       model.put("template", "templates/stylists.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
+
+    // post("/stylists", (request, response) -> {
+    //   Map<String, Object> model = new HashMap<String, Object>();
+    //   String name = request.queryParams("name");
+    //   String location = request.queryParams("location");
+    //   String website = request.queryParams("website");
+    //   String description = request.queryParams("description");
+    //   HairSalon hairsalon = new HairSalon(name, location, website, description);
+    //   hairsalon.save();
+    //   response.redirect("/stylists");
+    //   return new ModelAndView(model, layout);
+    // }, new VelocityTemplateEngine());
 
     get("/stylists/new", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
