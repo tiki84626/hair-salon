@@ -8,7 +8,7 @@ public class StylistTest {
 
   @Test
   public void stylist_instantiatesCorrectly_true() {
-    Stylist testStylist = new Stylist("Barbara Smith", "barb.sm1th@gmail.com");
+    Stylist testStylist = new Stylist("Susan Smith", "susansmith@gmail.com", "123-456-7890", 1);
     assertEquals(true, testStylist instanceof Stylist);
   }
 

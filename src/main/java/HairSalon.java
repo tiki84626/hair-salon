@@ -17,12 +17,14 @@ public class HairSalon {
     } else {
       HairSalon newHairSalon = (HairSalon) otherHairSalon;
       return this.getName().equals(newHairSalon.getName()) &&
+             this.getLocation().equals(newHairSalon.getLocation()) &&
+             this.getWebsite().equals(newHairSalon.getWebsite()) &&
+             this.getDescription().equals(newHairSalon.getDescription()) &&
              this.getId() == newHairSalon.getId();
     }
   }
 
-  public HairSalon(String _name, String _location, String _website, String _description)
-    {
+  public HairSalon(String _name, String _location, String _website, String _description) {
       name = _name;
       location = _location;
       website = _website;
@@ -84,10 +86,10 @@ public class HairSalon {
 
   public List<Stylist> getStylists() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "SELECT * FROM stylists where hairSalonId=:id;";
+      String sql = "SELECT * FROM stylists WHERE hairsalonid = :id;";
       return con.createQuery(sql)
-        .addParameter("id", this.id)
-        .executeAndFetch(Stylist.class);
+      .addParameter("id", id)
+      .executeAndFetch(Stylist.class);
     }
   }
 
@@ -105,8 +107,7 @@ public class HairSalon {
     }
   }
 
-  public void update()
-    {
+  public void update() {
       try(Connection con = DB.sql2o.open()) {
         String sql = "UPDATE hair_salons SET name = :name, location = :location, " +
                      "website = :website, description = :description WHERE id = :id;";
