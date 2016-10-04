@@ -17,4 +17,39 @@ public class ClientTest {
     assertEquals(true, testClient instanceof Client);
   }
 
+  @Test
+  public void getName_grabsNameFromClientObject_String() {
+    Date testClientAppointment = Date.valueOf("2016-10-22");
+    Client testClient = new Client("Bob", "bob@test.com", "123-456-7890", testClientAppointment, 1);
+    assertEquals("Bob", testClient.getName());
+  }
+
+  @Test
+  public void getEmail_grabsEmailFromClientObject_String() {
+    Date testClientAppointment = Date.valueOf("2016-10-22");
+    Client testClient = new Client("Bob", "bob@test.com", "123-456-7890", testClientAppointment, 1);
+    assertEquals("bob@test.com", testClient.getEmail());
+  }
+
+  @Test
+  public void getPhoneNumber_grabsPhoneNumberFromClientObject_String() {
+    Date testClientAppointment = Date.valueOf("2016-10-22");
+    Client testClient = new Client("Bob", "bob@test.com", "123-456-7890", testClientAppointment, 1);
+    assertEquals("123-456-7890", testClient.getPhoneNumber());
+  }
+
+  @Test
+  public void getAppointment_grabsAppointmentFromClientObject_String() {
+    Date testClientAppointment = Date.valueOf("2016-10-22");
+    Client testClient = new Client("Bob", "bob@test.com", "123-456-7890", testClientAppointment, 1);
+    assertEquals(testClientAppointment, testClient.getAppointment());
+  }
+
+  @Test
+  public void getStylistId_grabsStylistIdFromClientObject_String() {
+    Date testClientAppointment = Date.valueOf("2016-10-22");
+    Client testClient = new Client("Bob", "bob@test.com", "123-456-7890", testClientAppointment, 1);
+    assertEquals(1, testClient.getStylistId());
+  }
+
 }

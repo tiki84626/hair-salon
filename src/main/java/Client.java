@@ -93,6 +93,20 @@ public class Client{
     }
   }
 
+  public void update() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE clients SET (name, email, phonenumber, appointment, stylistid) = (:name, :emali, :phonenumber, :appointment, :stylistid) WHERE id = :id;";
+      con.createQuery(sql)
+      .addParameter("name", this.name)
+      .addParameter("email", this.email)
+      .addParameter("phonenumber", this.phoneNumber)
+      .addParameter("appointment", this.appointment)
+      .addParameter("stylistid", this.stylistId)
+      .addParameter("id", this.id)
+      .executeUpdate();
+    }
+  }
+
   public static Client find(int id) {
     try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM clients WHERE id = :id;";
