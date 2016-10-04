@@ -68,4 +68,16 @@ public class ClientTest {
     assertTrue(Client.all().get(0).equals(testClient));
   }
 
+  @Test
+  public void all_grabsAllClients_true() {
+    Date client1Appointment = Date.valueOf("2016-10-22");
+    Client testClient1 = new Client("Bob", "bob@test.com", "123-456-7890", client1Appointment, 1);
+    testClient1.save();
+    Date client2Appointment = Date.valueOf("2016-10-28");
+    Client testClient2 = new Client("Anna", "anna@test.com", "456-123-7890", client2Appointment, 1);
+    testClient2.save();
+    assertEquals(true, Client.all().get(0).equals(testClient1));
+    assertEquals(true, Client.all().get(1).equals(testClient2));
+  }
+
 }
