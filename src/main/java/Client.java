@@ -117,6 +117,13 @@ public class Client{
     }
   }
 
+  public static List<Client> all() {
+    String sql = "SELECT * FROM clients;";
+    try(Connection con = DB.sql2o.open()) {
+      return con.createQuery(sql).executeAndFetch(Client.class);
+    }
+  }
+
   public void delete() {
     try(Connection con = DB.sql2o.open()) {
       String sql = "DELETE FROM clients WHERE id = :id;";

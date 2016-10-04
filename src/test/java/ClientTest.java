@@ -52,4 +52,20 @@ public class ClientTest {
     assertEquals(1, testClient.getStylistId());
   }
 
+  @Test
+  public void equals_compareTwoHairSalonObjects_true() {
+    Date testClientAppointment = Date.valueOf("2016-10-22");
+    Client testClient1 = new Client("Bob", "bob@test.com", "123-456-7890", testClientAppointment, 1);
+    Client testClient2 = new Client("Bob", "bob@test.com", "123-456-7890", testClientAppointment, 1);
+    assertEquals(true, testClient1.equals(testClient2));
+  }
+
+  @Test
+  public void save_savesClient_true() {
+    Date testClientAppointment = Date.valueOf("2016-10-22");
+    Client testClient = new Client("Bob", "bob@test.com", "123-456-7890", testClientAppointment, 1);
+    testClient.save();
+    assertTrue(Client.all().get(0).equals(testClient));
+  }
+
 }
