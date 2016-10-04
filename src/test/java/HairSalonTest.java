@@ -103,9 +103,9 @@ public class HairSalonTest{
   public void getStylists_retrievesStylistsFromHairSalonObject_true() {
     HairSalon testHairSalon = new HairSalon("Ginger Salon", "Portland, OR", "http://www.gingersalon.com/", "A tiny salon with three locations, and just two chairs at each location, we specialize in everything fabulous. Period.");
     int hairsalonid = testHairSalon.getId();
-    Stylist testStylist1 = new Stylist("Susan", "123-456-7890", "susan@test.com", hairsalonid);
+    Stylist testStylist1 = new Stylist("Susan", "susan@test.com", "123-456-7890", hairsalonid);
     testStylist1.save();
-    Stylist testStylist2 = new Stylist("Barb", "123-456-7890", "barb@gmail.com", hairsalonid);
+    Stylist testStylist2 = new Stylist("Barb", "barb@test.com", "456-123-7890", hairsalonid);
     testStylist2.save();
     assertTrue(testHairSalon.getStylists().contains(testStylist1));
     assertTrue(testHairSalon.getStylists().contains(testStylist2));

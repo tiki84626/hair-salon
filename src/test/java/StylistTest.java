@@ -87,4 +87,20 @@ public class StylistTest {
     assertEquals(2, testStylist.getHairSalonId());
   }
 
+  @Test
+  public void getId_grabsIdFromStylistObject_true() {
+    Stylist testStylist = new Stylist("Susan", "susan@test.com", "123-456-7890", 1);
+    testStylist.save();
+    assertTrue(testStylist.getId() > 0);
+  }
+
+  @Test
+  public void find_findsStylistAssociatedWithId_true() {
+    Stylist testStylist1 = new Stylist("Susan", "susan@test.com", "123-456-7890", 1);
+    testStylist1.save();
+    Stylist testStylist2 = new Stylist("Barb", "barb@test.com", "456-123-7890", 2);
+    testStylist2.save();
+    assertEquals(Stylist.find(testStylist2.getId()), testStylist2);
+  }
+
 }

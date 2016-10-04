@@ -76,7 +76,7 @@ public class HairSalon {
 
   public static HairSalon find(int id) {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "SELECT * FROM hair_salons where id=:id;";
+      String sql = "SELECT * FROM hair_salons where id = :id;";
       HairSalon hair_salon = con.createQuery(sql)
         .addParameter("id", id)
         .executeAndFetchFirst(HairSalon.class);
