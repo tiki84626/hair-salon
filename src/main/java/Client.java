@@ -95,7 +95,9 @@ public class Client{
 
   public void update() {
     try(Connection con = DB.sql2o.open()) {
-      String sql = "UPDATE clients SET (name, email, phonenumber, appointment, stylistid) = (:name, :emali, :phonenumber, :appointment, :stylistid) WHERE id = :id;";
+      String sql = "UPDATE clients SET name = :name, email = :emali, " +
+                   "phonenumber = :phonenumber, appointment = :appointment, " +
+                   "stylistid = :stylistid WHERE id = :id;";
       con.createQuery(sql)
       .addParameter("name", this.name)
       .addParameter("email", this.email)

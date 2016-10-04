@@ -80,4 +80,58 @@ public class ClientTest {
     assertEquals(true, Client.all().get(1).equals(testClient2));
   }
 
+  @Test
+  public void setName_updatesNameOfClientObject_String() {
+    Date testClientAppointment = Date.valueOf("2016-10-22");
+    Client testClient = new Client("Bob", "bob@test.com", "123-456-7890", testClientAppointment, 1);
+    testClient.save();
+    testClient.setName("Nick");
+    assertEquals("Nick", testClient.getName());
+  }
+
+  @Test
+  public void setEmail_updatesEmailOfClientObject_String() {
+    Date testClientAppointment = Date.valueOf("2016-10-22");
+    Client testClient = new Client("Bob", "bob@test.com", "123-456-7890", testClientAppointment, 1);
+    testClient.save();
+    testClient.setEmail("bob1@test.com");
+    assertEquals("bob1@test.com", testClient.getEmail());
+  }
+
+  @Test
+  public void setPhoneNumber_updatesPhoneNumberOfClientObject_String() {
+    Date testClientAppointment = Date.valueOf("2016-10-22");
+    Client testClient = new Client("Bob", "bob@test.com", "123-456-7890", testClientAppointment, 1);
+    testClient.save();
+    testClient.setPhoneNumber("986-987-3578");
+    assertEquals("986-987-3578", testClient.getPhoneNumber());
+  }
+
+  @Test
+  public void setAppointment_updatesAppointmentOfClientObject_String() {
+    Date testClientAppointment = Date.valueOf("2016-10-22");
+    Client testClient = new Client("Bob", "bob@test.com", "123-456-7890", testClientAppointment, 1);
+    testClient.save();
+    Date newAppointment = Date.valueOf("2016-10-23");
+    testClient.setAppointment(newAppointment);
+    assertEquals(newAppointment, testClient.getAppointment());
+  }
+
+  @Test
+  public void setStylistId_updatesStylistIdOfClientObject_String() {
+    Date testClientAppointment = Date.valueOf("2016-10-22");
+    Client testClient = new Client("Bob", "bob@test.com", "123-456-7890", testClientAppointment, 1);
+    testClient.save();
+    testClient.setStylistId(2);
+    assertEquals(2, testClient.getStylistId());
+  }
+
+  @Test
+  public void find_findsClientWithSameId_true() {
+    Date testClientAppointment = Date.valueOf("2016-10-22");
+    Client testClient = new Client("Bob", "bob@test.com", "123-456-7890", testClientAppointment, 1);
+    testClient.save();
+    assertEquals(Client.find(testClient.getId()), testClient);
+  }
+
 }
