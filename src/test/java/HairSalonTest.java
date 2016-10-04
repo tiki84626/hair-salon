@@ -107,8 +107,8 @@ public class HairSalonTest{
     testStylist1.save();
     Stylist testStylist2 = new Stylist("Barb", "barb@test.com", "456-123-7890", hairsalonid);
     testStylist2.save();
-    assertTrue(testHairSalon.getStylists().contains(testStylist1));
-    assertTrue(testHairSalon.getStylists().contains(testStylist2));
+    assertTrue(testHairSalon.getStylists().contains(testStylist1) &&
+               testHairSalon.getStylists().contains(testStylist2));
   }
 
   @Test

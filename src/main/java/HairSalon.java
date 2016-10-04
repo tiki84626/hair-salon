@@ -88,8 +88,8 @@ public class HairSalon {
     try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM stylists WHERE hairsalonid = :id;";
       return con.createQuery(sql)
-      .addParameter("id", id)
-      .executeAndFetch(Stylist.class);
+        .addParameter("id", id)
+        .executeAndFetch(Stylist.class);
     }
   }
 

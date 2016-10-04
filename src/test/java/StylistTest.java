@@ -1,7 +1,10 @@
 import org.sql2o.*;
 import org.junit.*;
 import static org.junit.Assert.*;
-import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.sql.Date;
 
 public class StylistTest {
   @Rule
@@ -102,5 +105,19 @@ public class StylistTest {
     testStylist2.save();
     assertEquals(Stylist.find(testStylist2.getId()), testStylist2);
   }
+
+  // @Test
+  // public void getClients_retrievesClientsFromStylistObject_true() {
+  //   Stylist testStylist = new Stylist("Susan", "susan@test.com", "123-456-7890", 1);
+  //   int stylistid = testStylist.getId();
+  //   Date client1Appointment = Date.valueOf("2016-10-22");
+  //   Client testClient1 = new Client("Bob", "bob@test.com", "123-456-7890", client1Appointment, stylistid);
+  //   testClient1.save();
+  //   Date client2Appointment = Date.valueOf("2016-10-28");
+  //   Client testClient2 = new Client("Anna", "anna@test.com", "456-123-7890", client2Appointment, stylistid);
+  //   testClient2.save();
+  //   assertTrue(testStylist.getClients().contains(testClient1) &&
+  //              testStylist.getClients().contains(testClient2));
+  // }
 
 }
