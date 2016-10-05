@@ -1,0 +1,16 @@
+#if (!($stylists.isEmpty()))
+  <p><a href="/hairsalons/$hairsalon.getId()/stylists/new">Add new stylist to $hairsalon.</a></p>
+  #foreach ($stylist in $stylists)
+  <div class="imgColumns">
+    <a href="/hairsalon/$hairsalon.getId()/clients/$client.getId()">
+      <div class="hoverText">
+        <p>$stylist.getName()</p>
+      </div>
+    </a>
+    <p>$stylist.getEmail()</p>
+    <p>$stylist.getPhoneNumber()</p>
+  </div>
+  #end
+  #else
+    <p id="elseStatement"><a href="/hairsalons/$hairsalon.getId()/stylists/new">Add your first stylist.</a></p>
+  #end

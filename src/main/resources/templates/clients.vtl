@@ -1,8 +1,7 @@
-<h1>Hair Salons</h1>
-#if (!($hairsalons.isEmpty()))
-<p><a href="/hairsalons/new">Add new Hair Salon.</a></p>
-#foreach ($hairsalon in $hairsalons)
-<a href="/hairsalons/$hairsalon.getId()">
+<h1>Clients</h1>
+<h4>Here is a list of all clients currently in our database</h4>
+#foreach ($client in $clients)
+<a href="/hairsalons/$hairsalon.getId()/styl">
   <div class="hoverText">
     <p>$hairsalon.getName()</p>
   </div>
