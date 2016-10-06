@@ -34,7 +34,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: clients; Type: TABLE; Schema: public; Owner: andrewmalkin
+-- Name: clients; Type: TABLE; Schema: public; Owner:
 --
 
 CREATE TABLE clients (
@@ -47,10 +47,10 @@ CREATE TABLE clients (
 );
 
 
-ALTER TABLE clients OWNER TO andrewmalkin;
+ALTER TABLE clients OWNER TO t1k1;
 
 --
--- Name: clients_id_seq; Type: SEQUENCE; Schema: public; Owner: andrewmalkin
+-- Name: clients_id_seq; Type: SEQUENCE; Schema: public; Owner: t1k1
 --
 
 CREATE SEQUENCE clients_id_seq
@@ -61,17 +61,17 @@ CREATE SEQUENCE clients_id_seq
     CACHE 1;
 
 
-ALTER TABLE clients_id_seq OWNER TO andrewmalkin;
+ALTER TABLE clients_id_seq OWNER TO t1k1;
 
 --
--- Name: clients_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: andrewmalkin
+-- Name: clients_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: t1k1
 --
 
 ALTER SEQUENCE clients_id_seq OWNED BY clients.id;
 
 
 --
--- Name: hair_salons; Type: TABLE; Schema: public; Owner: andrewmalkin
+-- Name: hair_salons; Type: TABLE; Schema: public; Owner: t1k1
 --
 
 CREATE TABLE hair_salons (
@@ -83,10 +83,10 @@ CREATE TABLE hair_salons (
 );
 
 
-ALTER TABLE hair_salons OWNER TO andrewmalkin;
+ALTER TABLE hair_salons OWNER TO t1k1;
 
 --
--- Name: hair_salons_id_seq; Type: SEQUENCE; Schema: public; Owner: andrewmalkin
+-- Name: hair_salons_id_seq; Type: SEQUENCE; Schema: public; Owner: t1k1
 --
 
 CREATE SEQUENCE hair_salons_id_seq
@@ -97,17 +97,17 @@ CREATE SEQUENCE hair_salons_id_seq
     CACHE 1;
 
 
-ALTER TABLE hair_salons_id_seq OWNER TO andrewmalkin;
+ALTER TABLE hair_salons_id_seq OWNER TO t1k1;
 
 --
--- Name: hair_salons_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: andrewmalkin
+-- Name: hair_salons_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: t1k1
 --
 
 ALTER SEQUENCE hair_salons_id_seq OWNED BY hair_salons.id;
 
 
 --
--- Name: stylists; Type: TABLE; Schema: public; Owner: andrewmalkin
+-- Name: stylists; Type: TABLE; Schema: public; Owner: t1k1
 --
 
 CREATE TABLE stylists (
@@ -119,10 +119,10 @@ CREATE TABLE stylists (
 );
 
 
-ALTER TABLE stylists OWNER TO andrewmalkin;
+ALTER TABLE stylists OWNER TO t1k1;
 
 --
--- Name: stylists_id_seq; Type: SEQUENCE; Schema: public; Owner: andrewmalkin
+-- Name: stylists_id_seq; Type: SEQUENCE; Schema: public; Owner: t1k1
 --
 
 CREATE SEQUENCE stylists_id_seq
@@ -133,38 +133,38 @@ CREATE SEQUENCE stylists_id_seq
     CACHE 1;
 
 
-ALTER TABLE stylists_id_seq OWNER TO andrewmalkin;
+ALTER TABLE stylists_id_seq OWNER TO t1k1;
 
 --
--- Name: stylists_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: andrewmalkin
+-- Name: stylists_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: t1k1
 --
 
 ALTER SEQUENCE stylists_id_seq OWNED BY stylists.id;
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: andrewmalkin
+-- Name: id; Type: DEFAULT; Schema: public; Owner: t1k1
 --
 
 ALTER TABLE ONLY clients ALTER COLUMN id SET DEFAULT nextval('clients_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: andrewmalkin
+-- Name: id; Type: DEFAULT; Schema: public; Owner: t1k1
 --
 
 ALTER TABLE ONLY hair_salons ALTER COLUMN id SET DEFAULT nextval('hair_salons_id_seq'::regclass);
 
 
 --
--- Name: id; Type: DEFAULT; Schema: public; Owner: andrewmalkin
+-- Name: id; Type: DEFAULT; Schema: public; Owner: t1k1
 --
 
 ALTER TABLE ONLY stylists ALTER COLUMN id SET DEFAULT nextval('stylists_id_seq'::regclass);
 
 
 --
--- Data for Name: clients; Type: TABLE DATA; Schema: public; Owner: andrewmalkin
+-- Data for Name: clients; Type: TABLE DATA; Schema: public; Owner: t1k1
 --
 
 COPY clients (id, name, email, phonenumber, appointment, stylistid) FROM stdin;
@@ -172,14 +172,14 @@ COPY clients (id, name, email, phonenumber, appointment, stylistid) FROM stdin;
 
 
 --
--- Name: clients_id_seq; Type: SEQUENCE SET; Schema: public; Owner: andrewmalkin
+-- Name: clients_id_seq; Type: SEQUENCE SET; Schema: public; Owner: t1k1
 --
 
 SELECT pg_catalog.setval('clients_id_seq', 1, false);
 
 
 --
--- Data for Name: hair_salons; Type: TABLE DATA; Schema: public; Owner: andrewmalkin
+-- Data for Name: hair_salons; Type: TABLE DATA; Schema: public; Owner: t1k1
 --
 
 COPY hair_salons (id, name, location, website, description) FROM stdin;
@@ -187,14 +187,14 @@ COPY hair_salons (id, name, location, website, description) FROM stdin;
 
 
 --
--- Name: hair_salons_id_seq; Type: SEQUENCE SET; Schema: public; Owner: andrewmalkin
+-- Name: hair_salons_id_seq; Type: SEQUENCE SET; Schema: public; Owner: t1k1
 --
 
 SELECT pg_catalog.setval('hair_salons_id_seq', 1, false);
 
 
 --
--- Data for Name: stylists; Type: TABLE DATA; Schema: public; Owner: andrewmalkin
+-- Data for Name: stylists; Type: TABLE DATA; Schema: public; Owner: t1k1
 --
 
 COPY stylists (id, name, email, phonenumber, hairsalonid) FROM stdin;
@@ -202,14 +202,14 @@ COPY stylists (id, name, email, phonenumber, hairsalonid) FROM stdin;
 
 
 --
--- Name: stylists_id_seq; Type: SEQUENCE SET; Schema: public; Owner: andrewmalkin
+-- Name: stylists_id_seq; Type: SEQUENCE SET; Schema: public; Owner: t1k1
 --
 
 SELECT pg_catalog.setval('stylists_id_seq', 1, false);
 
 
 --
--- Name: clients_pkey; Type: CONSTRAINT; Schema: public; Owner: andrewmalkin
+-- Name: clients_pkey; Type: CONSTRAINT; Schema: public; Owner: t1k1
 --
 
 ALTER TABLE ONLY clients
@@ -217,7 +217,7 @@ ALTER TABLE ONLY clients
 
 
 --
--- Name: hair_salons_pkey; Type: CONSTRAINT; Schema: public; Owner: andrewmalkin
+-- Name: hair_salons_pkey; Type: CONSTRAINT; Schema: public; Owner: t1k1
 --
 
 ALTER TABLE ONLY hair_salons
@@ -225,7 +225,7 @@ ALTER TABLE ONLY hair_salons
 
 
 --
--- Name: stylists_pkey; Type: CONSTRAINT; Schema: public; Owner: andrewmalkin
+-- Name: stylists_pkey; Type: CONSTRAINT; Schema: public; Owner: t1k1
 --
 
 ALTER TABLE ONLY stylists
@@ -233,12 +233,12 @@ ALTER TABLE ONLY stylists
 
 
 --
--- Name: public; Type: ACL; Schema: -; Owner: andrewmalkin
+-- Name: public; Type: ACL; Schema: -; Owner: t1k1
 --
 
 REVOKE ALL ON SCHEMA public FROM PUBLIC;
-REVOKE ALL ON SCHEMA public FROM andrewmalkin;
-GRANT ALL ON SCHEMA public TO andrewmalkin;
+REVOKE ALL ON SCHEMA public FROM t1k1;
+GRANT ALL ON SCHEMA public TO t1k1;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 

@@ -1,0 +1,22 @@
+#if (!($clients.isEmpty()))
+  <h1>$stylist.getName()</h1>
+  <p><a href="/hairsalons/$hairsalonid/stylists/$stylistid/clients/new">Add new client to $stylist.getName().</a></p>
+  <h2>All $stylist.getName()'s clients:</h2>
+  #foreach ($client in $clients)
+  <div class="imgColumns">
+    <a href="/hairsalons/$hairsalonid/stylists/$stylistid/clients/$client.getId()">
+      <div class="hoverText">
+        <h2>$client.getName()</h2>
+      </div>
+    </a>
+    <h3>Email Address:</h3>
+    <p>$client.getEmail()</p>
+    <h3>Phone Number:</h3>
+    <p>$client.getPhoneNumber()</p>
+    <h3>Appointment Date</h3>
+    <p>$client.getAppointment()</p>
+  </div>
+  #end
+  #else
+    <p id="elseStatement"><a href="/hairsalons/$hairsalonid/stylists/$stylistid/clients/new">Add the first client to $stylist.getName().</a></p>
+  #end
